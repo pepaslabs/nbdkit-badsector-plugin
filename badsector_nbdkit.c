@@ -97,7 +97,7 @@ int64_t badsector_get_size(void *passed_handle)
 bool extent_crosses_bad_sector(uint64_t offset, uint32_t size)
 {
     uint64_t first_sector = offset >> SHIFTS_FOR_512_BYTE_SECTOR;
-    uint64_t last_sector = (offset + size) >> SHIFTS_FOR_512_BYTE_SECTOR; 
+    uint64_t last_sector = (offset + size) >> SHIFTS_FOR_512_BYTE_SECTOR; // technically, (offset + size) could overflow.
     return first_sector <= bad_sector && bad_sector <= last_sector;
 }
 
